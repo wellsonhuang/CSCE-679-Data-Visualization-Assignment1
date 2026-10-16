@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hong Kong Temperature Heatmap</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- D3.js v7, bundled locally so the page also works offline -->
+  <script src="lib/d3.v7.min.js"></script>
+</head>
+<body>
+  <h1>Hong Kong Monthly Temperature</h1>
+
+  <!-- Switch between monthly maximum and minimum temperature.
+       Clicking any cell in either chart also toggles the mode. -->
+  <div id="mode-switch">
+    <span>Show:</span>
+    <label><input type="radio" name="mode" value="max" checked> Max temperature</label>
+    <label><input type="radio" name="mode" value="min"> Min temperature</label>
+    <span class="hint">(or click any cell to toggle)</span>
+  </div>
+
+  <section>
+    <h2>Level 1: Year / Month Heatmap</h2>
+    <div id="level1-chart"></div>
+  </section>
+
+  <section>
+    <h2>Level 2: Heatmap with Daily Temperature (Last 10 Years)</h2>
+    <p class="hint">Green line: daily maximum &nbsp;·&nbsp; Light-blue line: daily minimum</p>
+    <div id="level2-chart"></div>
+  </section>
+
+  <!-- Shared tooltip element, positioned on mouse move -->
+  <div id="tooltip"></div>
+
+  <!-- Plain scripts (not ES modules) so index.html can be opened by double-click.
+       Order matters: each file uses what the files above it define. -->
+  <script src="data/temperature-data.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
